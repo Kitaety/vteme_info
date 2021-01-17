@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart' as r;
 import 'package:test_app/common/error_handler.dart';
+import 'package:test_app/common/widget_model.dart';
 import 'package:test_app/data/news_article.dart';
-import 'package:test_app/utils/widget_model.dart';
 
 class NewsArticleBlockWm extends WidgetModel {
   /// Emit events about favorites storage change
@@ -20,7 +20,7 @@ class NewsArticleBlockWm extends WidgetModel {
 
   NewsArticleBlockWm(
     NewsArticle repo,
-  ): super(errorHandler: NewsArticleBlockErrorHandler()) {
+  ) : super(errorHandler: NewsArticleBlockErrorHandler()) {
     subscribe(favoriteTapAction.stream,
         (_) => _handleFavoriteTap(!repoState.value.isFavorite));
     _init(repo);
@@ -31,6 +31,7 @@ class NewsArticleBlockWm extends WidgetModel {
     isFavoriteState.accept(article.isFavorite);
   }
 
+  //TODO добавление статьи в закладки
   Future<void> _handleFavoriteTap(bool isFavorite) async {
     final NewsArticle article = repoState.value;
     print(isFavorite.toString());

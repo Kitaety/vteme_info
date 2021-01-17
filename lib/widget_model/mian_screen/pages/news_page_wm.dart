@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart' as r;
 import 'package:test_app/common/error_handler.dart';
-import 'package:test_app/common/navigation_service.dart';
-import 'package:test_app/common/web_services.dart';
+import 'package:test_app/common/widget_model.dart';
+import 'package:test_app/utils/navigation_service.dart';
+import 'package:test_app/utils/web_services.dart';
 import 'package:test_app/data/news_article.dart';
-import 'package:test_app/utils/widget_model.dart';
 
 class NewsPageWM extends WidgetModel {
   /// Represent news article
@@ -15,11 +15,7 @@ class NewsPageWM extends WidgetModel {
 
   final tapAction = r.Action();
 
-  NewsPageWM()
-  :super(
-    errorHandler: NewsPageErrorHandle()
-  )
-  {
+  NewsPageWM() : super(errorHandler: NewsPageErrorHandle()) {
     subscribe(tapAction.stream, (article) => _onTapNewsArticleWidget(article));
     subscribe(refreshAction.stream, (_) => _loadNewsArticle());
     _loadNewsArticle();
@@ -37,12 +33,11 @@ class NewsPageWM extends WidgetModel {
   }
 
   Future<void> _onTapNewsArticleWidget(NewsArticle article) async {
-    NavigationService.instance.navigateTo("article_page",arguments: article);
+    NavigationService.instance.navigateTo("article_page", arguments: article);
   }
 }
 
-
-class NewsPageErrorHandle extends ErrorHandler{
+class NewsPageErrorHandle extends ErrorHandler {
   @override
   void handleError(Object e) {
     debugPrint('[News Page]:${e.toString()}');

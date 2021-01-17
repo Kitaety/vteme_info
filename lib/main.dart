@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:test_app/ui/app.dart';
 import 'common/error_handler.dart';
-import 'common/web_services.dart';
+import 'utils/web_services.dart';
 
 void main() {
   runApp(

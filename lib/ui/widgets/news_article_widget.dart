@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart';
+import 'package:test_app/common/icons_vteme_icons.dart';
+import 'package:test_app/common/widget_model.dart';
 import 'package:test_app/data/news_article.dart';
 
-import 'package:test_app/utils/icons_vteme_icons.dart';
-import 'package:test_app/utils/widget_model.dart';
 import 'package:test_app/widget_model/widgets/news_article_block_wm.dart';
 import 'spacer_list_item.dart';
 
@@ -106,7 +106,9 @@ class NewsArticleWidgetState extends State<NewsArticleWidget> {
                         ),
                         Container(
                           child: Text(
-                            article.description!= null ?article.description:"",
+                            article.description != null
+                                ? article.description
+                                : "",
                             style: TextStyle(
                               fontWeight: FontWeight.w300,
                               fontSize: 14,

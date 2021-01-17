@@ -1,3 +1,4 @@
+//TODO поменять, когда найду норм сервис для новостей
 class NewsArticle {
   final String title;
   final String description;
@@ -20,9 +21,9 @@ class NewsArticle {
     return NewsArticle(
       title: json['title'],
       description: json['description'],
-      urlToImage: json['urlToImage'] != null ?json['urlToImage'] : "" ,
+      urlToImage: json['urlToImage'] != null ? json['urlToImage'] : "",
       publishedAt: json['publishedAt'],
-      url: json['url'] != null? json['url'] : "",
+      url: json['url'] != null ? json['url'] : "",
       content: json['content'],
     );
   }

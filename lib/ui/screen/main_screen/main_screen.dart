@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart';
+import 'package:test_app/common/icons_vteme_icons.dart';
 import 'package:test_app/ui/widgets/primary_appbar.dart';
 import 'package:test_app/ui/widgets/left_menu/left_menu.dart';
-import 'package:test_app/utils/icons_vteme_icons.dart';
 import 'package:test_app/widget_model/mian_screen/main_screen_wn.dart';
 
 import 'pages/news_page.dart';
@@ -13,12 +13,9 @@ class MainScreen extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => _MainScreenState();
-
-
 }
 
 class _MainScreenState extends State<MainScreen> {
-
   @override
   void dispose() {
     widget.wm.dispose();
