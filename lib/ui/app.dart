@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/ui/screen/main_screen/main_screen.dart';
-import 'package:test_app/ui/screen/main_screen/pages/news_article_page.dart';
+import 'package:test_app/ui/main_screen/main_screen.dart';
 import 'package:test_app/utils/navigation_service.dart';
+
+import 'news_article_screen/news_article_screen.dart';
+import 'note_screen/note_screen.dart';
 
 class App extends StatefulWidget {
   @override
@@ -13,12 +15,13 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MaterialApp(
       navigatorKey: NavigationService.instance.navigationKey,
-      initialRoute: "home",
+      initialRoute: "screen_home",
       routes: {
         // "login":(BuildContext context) =>Login(),
         // "register":(BuildContext context) =>Register(),
-        "home": (BuildContext context) => MainScreen(),
-        "article_page": (context) => NewsArticlePage(),
+        "screen_home": (BuildContext context) => MainScreen(),
+        "screen_article": (context) => NewsArticleScreen(),
+        "note": (context) => NoteScreen(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
