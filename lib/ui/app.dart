@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:test_app/ui/currency_converter_screen/currency_converter_screen.dart';
 import 'package:test_app/ui/main_screen/main_screen.dart';
 import 'package:test_app/utils/navigation_service.dart';
 
 import 'news_article_screen/news_article_screen.dart';
 import 'note_screen/note_screen.dart';
+import 'package:test_app/ui/currency_converter_screen/add_currency_page/add_currency_page.dart';
 
 class App extends StatefulWidget {
   @override
@@ -21,7 +23,9 @@ class _AppState extends State<App> {
         // "register":(BuildContext context) =>Register(),
         "screen_home": (BuildContext context) => MainScreen(),
         "screen_article": (context) => NewsArticleScreen(),
-        "note": (context) => NoteScreen(),
+        "screen_note": (context) => NoteScreen(),
+        "screen_currency_converter": (context) => CurrencyConverterScreen(),
+        "add_currency_page": (context) => AddCurrencyPage(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -30,7 +34,6 @@ class _AppState extends State<App> {
         accentColor: Colors.purple,
         primaryColor: Colors.white,
       ),
-      // home: MainScreen(),
     );
   }
 }

@@ -11,8 +11,12 @@ import 'package:flutter/material.dart';
 ///
 /// методы
 /// *toMap - функция toMap для запросов к БД
+///
+/// константы:
+/// *defaultColor - возвращает цвет заметки поумолчанию
 
 class Note {
+  static const Color defaultColor = Colors.purpleAccent;
   final int id;
   String title;
   String content;

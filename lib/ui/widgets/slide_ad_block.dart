@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_banner_swiper/flutter_banner_swiper.dart';
-import 'package:test_app/utils/ad_mob_service.dart';
+import 'package:native_ads/native_ad_param.dart';
+import 'package:native_ads/native_ad_view.dart';
 
 class SlideAdBlock extends StatefulWidget {
   @override
@@ -8,22 +9,10 @@ class SlideAdBlock extends StatefulWidget {
 }
 
 class _SlideAdBlockState extends State<SlideAdBlock> {
-  final ams = new AdModService();
-
-  final _children = [
-    Container(
-      color: Colors.red,
-      child: Center(
-        child: Text("aaa"),
-      ),
-    ),
-    Container(
-      color: Colors.blue,
-      child: Center(
-        child: Text("bbb"),
-      ),
-    )
-  ];
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +24,33 @@ class _SlideAdBlockState extends State<SlideAdBlock> {
           width: 80,
           autoLoop: true,
           spaceMode: false,
-          length: _children.length,
+          length: 2,
           getwidget: (index) {
-            return _children[index % _children.length];
+            return getChildren(context, index % 2);
           }),
     );
+  }
+
+  Widget getChildren(context, index) {
+    return [
+      Container(
+        child: Text("aa"),
+      ),
+      // Container(
+      //     color: Colors.red,
+      //     child: NativeAdView(
+      //       androidParam: AndroidParam()
+      //         ..placementId = "ca-app-pub-1774878275661991/7408321775"
+      //         ..packageName = "com.example.test_app"
+      //         ..layoutName = "ad_banner"
+      //         ..attributionText = "AD",
+      //     )),
+      Container(
+        color: Colors.blue,
+        child: Center(
+          child: Text("bbb"),
+        ),
+      )
+    ][index];
   }
 }

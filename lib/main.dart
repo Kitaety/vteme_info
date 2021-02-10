@@ -3,22 +3,27 @@ import 'package:provider/provider.dart';
 import 'package:test_app/ui/app.dart';
 import 'common/error_handler.dart';
 import 'utils/web_services.dart';
+import 'package:flutter/services.dart';
 
 void main() {
-  runApp(
-    Provider(
-      create: (_) => {},
-      child: MultiProvider(
-        providers: [
-          Provider(create: (context) => WebServices()),
-          Provider(
-            create: (context) => Navigator.of(context),
-          )
-        ],
-        child: App(),
-      ),
-    ),
-  );
+  // TestWidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((value) => runApp(
+            Provider(
+              create: (_) => {},
+              child: MultiProvider(
+                providers: [
+                  Provider(create: (context) => WebServices()),
+                  Provider(
+                    create: (context) => Navigator.of(context),
+                  )
+                ],
+                child: App(),
+              ),
+            ),
+          ));
 }
 
 /// Log errors
