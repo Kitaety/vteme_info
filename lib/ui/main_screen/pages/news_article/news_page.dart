@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:relation/relation.dart';
 import 'package:test_app/data/news_article.dart';
 import 'package:test_app/ui/widgets/slide_ad_block.dart';
-
 import 'news_article_widget.dart';
 import 'news_page_wm.dart';
 import 'vip_ad_block.dart';
@@ -20,22 +20,25 @@ class NewsPageState extends State<NewsPage> {
   int modCountAd = 7;
   GlobalKey<RefreshIndicatorState> refreshState;
 
-  Widget buildItemList(int i, NewsArticle article) {
-    if (i > 0 && i % modCountAd == 0) {
-      //TODO доделать баннер рекламы
-      return VipAdBlock();
-    } else {
-      return Card(
-        child: NewsArticleWidget(
-          widgetModel: new NewsArticleWidgetWm(article),
-        ),
-      );
+  List<Widget> buildItemList(List<NewsArticle> articles) {
+    List<Widget> results = [];
+    for (int i = 0; i < articles.length; i++) {
+      if (i > 0 && i % modCountAd == 0) {
+        //TODO доделать баннер рекламы
+        results.add(VipAdBlock());
+      } else {
+        results.add(Card(
+          child: NewsArticleWidget(
+            widgetModel: new NewsArticleWidgetWm(articles[i]),
+          ),
+        ));
+      }
     }
+    return results;
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     refreshState = GlobalKey<RefreshIndicatorState>();
   }
@@ -79,17 +82,16 @@ class NewsPageState extends State<NewsPage> {
                   onRefresh: () async {
                     await widget.wm.refresNewsArticle();
                   },
-                  child: ListView.builder(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: ListView(
+                    children: buildItemList(articles),
                     clipBehavior: Clip.antiAlias,
-                    itemBuilder: (ctx, i) {
-                      if (i + (i ~/ modCountAd) >= articles.length)
-                        return null;
-                      else
-                        return buildItemList(
-                            i, articles[i - (i ~/ modCountAd)]);
-                    },
                   ),
+                  // child: ListView.builder(
+                  //   padding: EdgeInsets.symmetric(horizontal: 10),
+                  //   clipBehavior: Clip.antiAlias,
+                  //   itemBuilder: (ctx, i) {
+                  //   },
+                  // ),
                 ),
               ),
             ),

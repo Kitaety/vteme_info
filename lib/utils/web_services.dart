@@ -18,7 +18,6 @@ class WebServices {
   final String _urlNews = "http://pinsk.gov.by/about/info/news/rss/";
   final String _urlCurrency =
       "https://www.nbrb.by/api/exrates/rates?periodicity=";
-
   var dio = new Dio();
 
   Future<RssFeed> getNewsArticles() async {

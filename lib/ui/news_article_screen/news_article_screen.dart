@@ -1,54 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:relation/relation.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:test_app/data/news_article.dart';
 
-import 'news_article_screen_wm.dart';
-
 class NewsArticleScreen extends StatefulWidget {
-  NewsArticleScreenWM wm;
-
+  const NewsArticleScreen({Key key}) : super(key: key);
   @override
   _NewsArticlePageState createState() => _NewsArticlePageState();
 }
 
 class _NewsArticlePageState extends State<NewsArticleScreen> {
+  final flutterWebViewPlugin = FlutterWebviewPlugin();
   @override
   void dispose() {
-    widget.wm.dispose();
     super.dispose();
+    flutterWebViewPlugin.close();
+    flutterWebViewPlugin.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    widget.wm = new NewsArticleScreenWM(
-        article: ModalRoute.of(context).settings.arguments);
-
-    return Container(
-      child: StreamedStateBuilder(
-        streamedState: widget.wm.articlesState,
-        builder: (context, NewsArticle article) => SafeArea(
-          child: Scaffold(
-            appBar: AppBar(
-              leading: IconButton(
-                icon: Icon(
-                  Icons.arrow_back,
-                ),
-                onPressed: widget.wm.tapToBack,
-              ),
-            ),
-            body: ListView(
-              children: [
-                Image(
-                    image: NetworkImage(
-                  article.urlToImage,
-                )),
-                Text(article.title),
-                //todo поменять при загрузке нормальных статей
-                Text(article.description),
-              ],
-            ),
-          ),
-        ),
+    final NewsArticle article =
+        ModalRoute.of(context).settings.arguments as NewsArticle;
+    return WebviewScaffold(
+      url: article.url,
+      withZoom: true,
+      withLocalStorage: true,
+      hidden: true,
+      appBar: new AppBar(
+        title: new Text(article.title),
       ),
     );
   }
