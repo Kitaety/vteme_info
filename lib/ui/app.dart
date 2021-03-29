@@ -26,6 +26,7 @@ class _AppState extends State<App> {
         "screen_note": (context) => NoteScreen(),
         "screen_currency_converter": (context) => CurrencyConverterScreen(),
         "add_currency_page": (context) => AddCurrencyPage(),
+        "news_article_screen": (context) => NewsArticleScreen(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

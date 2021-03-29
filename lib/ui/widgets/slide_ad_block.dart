@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_banner_swiper/flutter_banner_swiper.dart';
-import 'package:native_ads/native_ad_param.dart';
-import 'package:native_ads/native_ad_view.dart';
 
 class SlideAdBlock extends StatefulWidget {
   @override

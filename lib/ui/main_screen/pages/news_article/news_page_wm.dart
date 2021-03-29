@@ -7,6 +7,7 @@ import 'package:test_app/data/news_article.dart';
 import 'package:webfeed/domain/rss_feed.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:intl/intl.dart';
+import 'package:html/parser.dart';
 
 class NewsPageWM extends WidgetModel {
   /// Represent news article
@@ -23,16 +24,24 @@ class NewsPageWM extends WidgetModel {
           : await WebServices.articlesList;
       List<NewsArticle> articles = [];
       for (RssItem item in feed.items) {
-        articles.add(NewsArticle(
-            title: item.title,
-            category: item.categories[0].value,
-            publishedAt: "TUT.BY",
-            description: item.description.substring(
-                item.description.indexOf(">") + 1,
-                item.description.indexOf("<br")),
-            urlToImage: item.enclosure.url,
-            url: item.link,
-            date: DateFormat('dd-MM-yyyy kk:mm').format(item.pubDate)));
+        var document = parse(item.description);
+        String desc = "";
+        for (var i in document.children[0].children[1].children) {
+          if (i.text.replaceAll('\n', '').trim().isNotEmpty) {
+            desc = i.text.replaceAll('\n', '');
+            break;
+          }
+        }
+        articles.add(
+          NewsArticle(
+              title: item.title,
+              description: desc,
+              category: "",
+              publishedAt: "",
+              date: DateFormat('dd-MM-yyyy kk:mm').format(item.pubDate),
+              url: item.link,
+              urlToImage: item.enclosure != null ? item.enclosure.url : ""),
+        );
       }
       articlesState.content(articles);
     } on Exception catch (e) {

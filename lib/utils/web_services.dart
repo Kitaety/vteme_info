@@ -14,10 +14,10 @@ class WebServices {
   List<NewsArticle> articles = [];
   List<Currency> currency = [];
 
-  final String _urlNews = "https://news.tut.by/rss/all.rss";
+  //final String _urlNews = "https://news.tut.by/rss/all.rss";
+  final String _urlNews = "http://pinsk.gov.by/about/info/news/rss/";
   final String _urlCurrency =
       "https://www.nbrb.by/api/exrates/rates?periodicity=";
-
   var dio = new Dio();
 
   Future<RssFeed> getNewsArticles() async {

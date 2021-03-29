@@ -6,7 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 
 class AddCurrencyPage extends StatefulWidget {
-  AddCurrencyPageWM wm = AddCurrencyPageWM();
+  final AddCurrencyPageWM wm = AddCurrencyPageWM();
 
   AddCurrencyPage({Key key}) : super(key: key);
 

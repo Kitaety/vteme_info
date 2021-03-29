@@ -30,7 +30,7 @@ class AddCurrencyPageWM extends WidgetModel {
   void _loadUserCurrency() async {
     currencysEntity.loading();
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    userCurrency.accept(await prefs.getStringList('currency'));
+    userCurrency.accept(prefs.getStringList('currency'));
     currencysEntity.content(WebServices.currencyList);
   }
 

@@ -6,6 +6,7 @@ import 'package:test_app/common/error_handler.dart';
 import 'package:test_app/common/icons_vteme_icons.dart';
 import 'package:test_app/common/widget_model.dart';
 import 'package:test_app/data/news_article.dart';
+import 'package:test_app/utils/navigation_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 ///NewsArticleWidget - блок для показа статьи в списке
@@ -37,16 +38,18 @@ class NewsArticleWidgetState extends State<NewsArticleWidget> {
           height: ResponsiveFlutter.of(context).scale(130),
           child: InkWell(
             onTap: () async {
-              if (await canLaunch(article.url)) {
-                await launch(
-                  article.url,
-                  forceSafariVC: true,
-                  forceWebView: false,
-                );
-              } else {
-                print(article.url);
-                print("else");
-              }
+              NavigationService.instance
+                  .navigateTo("news_article_screen", arguments: article);
+              // if (await canLaunch(article.url)) {
+              //   await launch(
+              //     article.url,
+              //     forceSafariVC: true,
+              //     forceWebView: false,
+              //   );
+              // } else {
+              //   print(article.url);
+              //   print("else");
+              // }
             },
             child: Row(
               children: [
