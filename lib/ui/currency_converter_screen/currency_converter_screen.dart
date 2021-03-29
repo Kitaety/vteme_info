@@ -8,7 +8,7 @@ import 'package:responsive_flutter/responsive_flutter.dart';
 
 class CurrencyConverterScreen extends StatefulWidget {
   CurrencyConverterScreen({Key key}) : super(key: key);
-  CurrencyConverterScreenWM wm = CurrencyConverterScreenWM();
+  final CurrencyConverterScreenWM wm = CurrencyConverterScreenWM();
 
   @override
   _CurrencyConverterScreenState createState() =>

@@ -8,7 +8,7 @@ import 'news_page_wm.dart';
 import 'vip_ad_block.dart';
 
 class NewsPage extends StatefulWidget {
-  NewsPageWM wm = new NewsPageWM();
+  final NewsPageWM wm = new NewsPageWM();
 
   @override
   State<StatefulWidget> createState() {

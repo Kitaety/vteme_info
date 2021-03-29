@@ -6,7 +6,7 @@ import 'package:test_app/ui/main_screen/pages/notes/notes_page_wm.dart';
 
 ///NotesPage - страница "Заметки"
 class NotesPage extends StatefulWidget {
-  NotesPageWM wm = NotesPageWM();
+  final NotesPageWM wm = NotesPageWM();
 
   @override
   _NotesPageState createState() => _NotesPageState();
