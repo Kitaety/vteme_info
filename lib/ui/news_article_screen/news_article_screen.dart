@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:test_app/data/news_article.dart';
+import 'package:vteme_info/data/news_article.dart';
 
 class NewsArticleScreen extends StatefulWidget {
   const NewsArticleScreen({Key key}) : super(key: key);

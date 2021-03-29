@@ -1,11 +1,10 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:relation/relation.dart';
-import 'package:test_app/common/icons_vteme_icons.dart';
-import 'package:test_app/ui/main_screen/pages/notes/notes_page.dart';
-import 'package:test_app/ui/widgets/left_menu/left_menu.dart';
+import 'package:vteme_info/common/icons_vteme_icons.dart';
+import 'package:vteme_info/ui/main_screen/pages/notes/notes_page.dart';
+import 'package:vteme_info/ui/widgets/left_menu/left_menu.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'main_screen_wm.dart';
 import 'pages/news_article/news_page.dart';

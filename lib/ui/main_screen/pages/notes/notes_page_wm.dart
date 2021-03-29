@@ -1,12 +1,12 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart' as r;
-import 'package:test_app/common/error_handler.dart';
-import 'package:test_app/common/widget_model.dart';
-import 'package:test_app/data/note.dart';
-import 'package:test_app/ui/note_screen/note_screen_wm.dart';
-import 'package:test_app/utils/navigation_service.dart';
-import 'package:test_app/utils/note_storege_service.dart';
+import 'package:vteme_info/common/error_handler.dart';
+import 'package:vteme_info/common/widget_model.dart';
+import 'package:vteme_info/data/note.dart';
+import 'package:vteme_info/ui/note_screen/note_screen_wm.dart';
+import 'package:vteme_info/utils/navigation_service.dart';
+import 'package:vteme_info/utils/note_storege_service.dart';
 
 ///класс widget model страницы с заметками
 ///свойства

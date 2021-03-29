@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart';
-import 'package:test_app/common/icons_vteme_icons.dart';
-import 'package:test_app/ui/currency_converter_screen/converter_list_item.dart';
-import 'package:test_app/data/currency.dart';
-import 'package:test_app/ui/currency_converter_screen/currency_converter_screen_wm.dart';
+import 'package:vteme_info/common/icons_vteme_icons.dart';
+import 'package:vteme_info/ui/currency_converter_screen/converter_list_item.dart';
+import 'package:vteme_info/data/currency.dart';
+import 'package:vteme_info/ui/currency_converter_screen/currency_converter_screen_wm.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 
 class CurrencyConverterScreen extends StatefulWidget {

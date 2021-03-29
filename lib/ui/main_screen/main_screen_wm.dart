@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart' as r;
-import 'package:test_app/common/error_handler.dart';
-import 'package:test_app/common/widget_model.dart';
+import 'package:vteme_info/common/error_handler.dart';
+import 'package:vteme_info/common/widget_model.dart';
 
 const int defaultPageIndex = 2;
 

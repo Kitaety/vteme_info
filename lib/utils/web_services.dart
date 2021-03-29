@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:test_app/data/currency.dart';
-import 'package:test_app/data/news_article.dart';
+import 'package:vteme_info/data/currency.dart';
+import 'package:vteme_info/data/news_article.dart';
 import 'package:webfeed/webfeed.dart';
 
 class WebServices {

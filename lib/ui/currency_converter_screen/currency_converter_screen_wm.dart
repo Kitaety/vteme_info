@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:relation/relation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:test_app/common/error_handler.dart';
-import 'package:test_app/common/widget_model.dart';
-import 'package:test_app/data/currency.dart';
-import 'package:test_app/utils/web_services.dart';
-import 'package:test_app/utils/navigation_service.dart';
+import 'package:vteme_info/common/error_handler.dart';
+import 'package:vteme_info/common/widget_model.dart';
+import 'package:vteme_info/data/currency.dart';
+import 'package:vteme_info/utils/web_services.dart';
+import 'package:vteme_info/utils/navigation_service.dart';
 
 class CurrencyConverterScreenWM extends WidgetModel {
   final List<String> defaultCurrencyList = [

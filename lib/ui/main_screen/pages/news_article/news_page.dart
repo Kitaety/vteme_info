@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:relation/relation.dart';
-import 'package:test_app/data/news_article.dart';
-import 'package:test_app/ui/widgets/slide_ad_block.dart';
+import 'package:vteme_info/data/news_article.dart';
+import 'package:vteme_info/ui/widgets/slide_ad_block.dart';
 import 'news_article_widget.dart';
 import 'news_page_wm.dart';
 import 'vip_ad_block.dart';

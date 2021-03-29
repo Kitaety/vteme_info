@@ -1,7 +1,7 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
-import 'package:test_app/data/note.dart';
+import 'package:vteme_info/data/note.dart';
 
 class NoteStoregeService {
   static Database db;

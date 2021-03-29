@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:relation/relation.dart';
-import 'package:test_app/data/note.dart';
-import 'package:test_app/utils/navigation_service.dart';
+import 'package:vteme_info/data/note.dart';
+import 'package:vteme_info/utils/navigation_service.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'note_screen_wm.dart';
 

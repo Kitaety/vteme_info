@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/ui/currency_converter_screen/currency_converter_screen.dart';
-import 'package:test_app/ui/main_screen/main_screen.dart';
-import 'package:test_app/utils/navigation_service.dart';
+import 'package:vteme_info/ui/currency_converter_screen/currency_converter_screen.dart';
+import 'package:vteme_info/ui/main_screen/main_screen.dart';
+import 'package:vteme_info/utils/navigation_service.dart';
 
 import 'news_article_screen/news_article_screen.dart';
 import 'note_screen/note_screen.dart';
-import 'package:test_app/ui/currency_converter_screen/add_currency_page/add_currency_page.dart';
+import 'package:vteme_info/ui/currency_converter_screen/add_currency_page/add_currency_page.dart';
 
 class App extends StatefulWidget {
   @override

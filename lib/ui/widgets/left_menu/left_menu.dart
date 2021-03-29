@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/common/icons_vteme_icons.dart';
+import 'package:vteme_info/common/icons_vteme_icons.dart';
 import '../spacer_list_item.dart';
 import 'left_menu_header.dart';
 import 'left_menu_item.dart';

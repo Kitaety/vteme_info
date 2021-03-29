@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart';
-import 'package:test_app/data/currency.dart';
+import 'package:vteme_info/data/currency.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 

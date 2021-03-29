@@ -2,11 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart' as r;
 import 'package:responsive_flutter/responsive_flutter.dart';
-import 'package:test_app/common/error_handler.dart';
-import 'package:test_app/common/icons_vteme_icons.dart';
-import 'package:test_app/common/widget_model.dart';
-import 'package:test_app/data/news_article.dart';
-import 'package:test_app/utils/navigation_service.dart';
+import 'package:vteme_info/common/error_handler.dart';
+import 'package:vteme_info/common/icons_vteme_icons.dart';
+import 'package:vteme_info/common/widget_model.dart';
+import 'package:vteme_info/data/news_article.dart';
+import 'package:vteme_info/utils/navigation_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 ///NewsArticleWidget - блок для показа статьи в списке

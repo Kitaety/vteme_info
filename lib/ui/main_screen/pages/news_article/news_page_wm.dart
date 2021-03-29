@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart' as r;
-import 'package:test_app/common/error_handler.dart';
-import 'package:test_app/common/widget_model.dart';
-import 'package:test_app/utils/web_services.dart';
-import 'package:test_app/data/news_article.dart';
+import 'package:vteme_info/common/error_handler.dart';
+import 'package:vteme_info/common/widget_model.dart';
+import 'package:vteme_info/utils/web_services.dart';
+import 'package:vteme_info/data/news_article.dart';
 import 'package:webfeed/domain/rss_feed.dart';
 import 'package:webfeed/webfeed.dart';
 import 'package:intl/intl.dart';

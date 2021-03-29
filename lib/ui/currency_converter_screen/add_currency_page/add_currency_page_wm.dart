@@ -1,8 +1,8 @@
 import 'package:relation/relation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:test_app/data/currency.dart';
-import 'package:test_app/utils/web_services.dart';
-import 'package:test_app/common/widget_model.dart';
+import 'package:vteme_info/data/currency.dart';
+import 'package:vteme_info/utils/web_services.dart';
+import 'package:vteme_info/common/widget_model.dart';
 
 class AddCurrencyPageWM extends WidgetModel {
   StreamedState<List<String>> userCurrency = StreamedState();

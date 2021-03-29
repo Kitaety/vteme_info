@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/common/icons_vteme_icons.dart';
-import 'package:test_app/utils/navigation_service.dart';
+import 'package:vteme_info/common/icons_vteme_icons.dart';
+import 'package:vteme_info/utils/navigation_service.dart';
 
 class ServicesPage extends StatefulWidget {
   ServicesPage({Key key}) : super(key: key);

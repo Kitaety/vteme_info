@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:relation/relation.dart';
-import 'package:test_app/data/note.dart';
-import 'package:test_app/ui/main_screen/pages/notes/notes_page_wm.dart';
+import 'package:vteme_info/data/note.dart';
+import 'package:vteme_info/ui/main_screen/pages/notes/notes_page_wm.dart';
 
 ///NotesPage - страница "Заметки"
 class NotesPage extends StatefulWidget {
