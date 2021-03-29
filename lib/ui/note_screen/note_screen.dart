@@ -3,7 +3,7 @@ import 'package:flutter_material_color_picker/flutter_material_color_picker.dart
 import 'package:relation/relation.dart';
 import 'package:test_app/data/note.dart';
 import 'package:test_app/utils/navigation_service.dart';
-
+import 'package:responsive_flutter/responsive_flutter.dart';
 import 'note_screen_wm.dart';
 
 class NoteScreen extends StatefulWidget {
@@ -14,7 +14,6 @@ class NoteScreen extends StatefulWidget {
 }
 
 class _NoteScreenState extends State<NoteScreen> {
-  TextEditingController _titleController = TextEditingController(text: "");
   TextEditingController _contentController = TextEditingController();
 
   bool isEnableButton = false;
@@ -25,9 +24,6 @@ class _NoteScreenState extends State<NoteScreen> {
     super.didChangeDependencies();
     widget.wm = NoteScreenWM(ModalRoute.of(context).settings.arguments);
 
-    _titleController = TextEditingController(
-      text: widget.wm.noteTitle,
-    );
     _contentController = TextEditingController(
       text: widget.wm.noteContent,
     );
@@ -35,7 +31,7 @@ class _NoteScreenState extends State<NoteScreen> {
         ? "Добавить заметку"
         : "Изменить заметку";
 
-    isEnableButton = _titleController.value.text.isNotEmpty;
+    isEnableButton = _contentController.value.text.isNotEmpty;
   }
 
   @override
@@ -58,7 +54,7 @@ class _NoteScreenState extends State<NoteScreen> {
                   icon: Icon(
                     Icons.delete_forever,
                   ),
-                  iconSize: 25,
+                  iconSize: ResponsiveFlutter.of(context).scale(25),
                   tooltip: "Delete note",
                   onPressed: () {
                     _showDeleteDialoge();
@@ -71,42 +67,6 @@ class _NoteScreenState extends State<NoteScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            TextField(
-              controller: _titleController,
-              onChanged: (text) {
-                setState(() {
-                  isEnableButton = text.isNotEmpty;
-                });
-              },
-              decoration: InputDecoration(
-                hintText: 'Заголовок заметки',
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
-                    width: 1,
-                  ),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
-                    width: 1,
-                  ),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(6),
-                  borderSide: BorderSide(
-                    color: Theme.of(context).accentColor,
-                    width: 1,
-                  ),
-                ),
-              ),
-              maxLines: 1,
-            ),
-            Container(
-              height: 16,
-            ),
             Expanded(
               flex: 10,
               child: Container(
@@ -125,6 +85,11 @@ class _NoteScreenState extends State<NoteScreen> {
                     hintText: 'Содержание заметки',
                     border: InputBorder.none,
                   ),
+                  onChanged: (text) {
+                    setState(() {
+                      isEnableButton = text.isNotEmpty;
+                    });
+                  },
                 ),
               ),
             ),
@@ -150,7 +115,6 @@ class _NoteScreenState extends State<NoteScreen> {
                     : () {
                         widget.wm.saveNote(Note(
                           color: widget.wm.noteColor,
-                          title: _titleController.value.text,
                           content: _contentController.value.text,
                         ));
                       },

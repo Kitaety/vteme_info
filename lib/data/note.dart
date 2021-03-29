@@ -18,20 +18,17 @@ import 'package:flutter/material.dart';
 class Note {
   static const Color defaultColor = Colors.purpleAccent;
   final int id;
-  String title;
   String content;
   Color color;
 
   Note({
     this.id,
-    this.title,
     this.content,
     this.color,
   });
 
   Map<String, dynamic> toMap(bool forUpdate) {
     var data = {
-      'title': utf8.encode(title),
       'content': utf8.encode(content),
       'color': color.value,
     };
@@ -43,6 +40,6 @@ class Note {
 
   @override
   String toString() {
-    return 'Note(id: $id, title: $title, content: $content, color: $color)';
+    return 'Note(id: $id,  content: $content, color: $color)';
   }
 }

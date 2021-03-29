@@ -6,7 +6,7 @@ import 'package:relation/relation.dart';
 import 'package:test_app/common/icons_vteme_icons.dart';
 import 'package:test_app/ui/main_screen/pages/notes/notes_page.dart';
 import 'package:test_app/ui/widgets/left_menu/left_menu.dart';
-
+import 'package:responsive_flutter/responsive_flutter.dart';
 import 'main_screen_wm.dart';
 import 'pages/news_article/news_page.dart';
 import 'pages/sevices/services_page.dart';
@@ -42,65 +42,91 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      top: true,
-      bottom: true,
-      child: Scaffold(
-        appBar: _buildAppBar(),
-        bottomNavigationBar: SizedBox(
-          height: 60,
-          child: StreamedStateBuilder(
-            streamedState: widget.wm.pageIndexState,
-            builder: (context, pageIndex) => BottomNavigationBar(
-              unselectedIconTheme: IconThemeData(
-                size: 30,
+    return Scaffold(
+      appBar: AppBar(
+        title: StreamedStateBuilder(
+          streamedState: widget.wm.titleAppBarState,
+          builder: (context, title) => title,
+        ),
+        iconTheme: IconThemeData(
+          color: Theme.of(context).accentColor,
+        ),
+        centerTitle: true,
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 10),
+            child: Row(children: [
+              FlutterSwitch(
+                height: 25,
+                width: 50,
+                valueFontSize: ResponsiveFlutter.of(context).fontSize(1.2),
+                toggleSize: 16.0,
+                value: _switchState,
+                onToggle: _onChangeStateSwitch,
+                showOnOff: true,
+                inactiveText: "RU",
+                activeText: "EN",
+                activeColor: Theme.of(context).accentColor,
+                inactiveTextColor: Colors.white,
+                activeTextColor: Colors.white,
               ),
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(IconsVteme.bookmark),
-                  activeIcon: Icon(IconsVteme.bookmark_selected),
-                  label: 'Закладки',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(IconsVteme.notebook),
-                  activeIcon: Icon(IconsVteme.notebook_selected),
-                  label: 'Заметки',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(IconsVteme.home),
-                  activeIcon: Icon(IconsVteme.home_selected),
-                  label: 'Главная',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(IconsVteme.services),
-                  activeIcon: Icon(IconsVteme.services_selected),
-                  label: 'Сервисы',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(IconsVteme.taxi),
-                  activeIcon: Icon(IconsVteme.taxi_selected),
-                  label: 'Такси',
-                ),
-              ],
-              currentIndex: pageIndex,
-              selectedItemColor: Colors.purple,
-              type: BottomNavigationBarType.fixed,
-              unselectedItemColor: Colors.grey,
-              showUnselectedLabels: false,
-              showSelectedLabels: true,
-              onTap: (index) {
-                widget.wm.changePageAction(index);
-                setTitleAppBar(index);
-              },
-              iconSize: 25,
+            ]),
+          ),
+        ],
+      ),
+      bottomNavigationBar: SizedBox(
+        height: 60,
+        child: StreamedStateBuilder(
+          streamedState: widget.wm.pageIndexState,
+          builder: (context, pageIndex) => BottomNavigationBar(
+            unselectedIconTheme: IconThemeData(
+              size: 30,
             ),
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(IconsVteme.bookmark),
+                activeIcon: Icon(IconsVteme.bookmark_selected),
+                label: 'Закладки',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(IconsVteme.notebook),
+                activeIcon: Icon(IconsVteme.notebook_selected),
+                label: 'Заметки',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(IconsVteme.home),
+                activeIcon: Icon(IconsVteme.home_selected),
+                label: 'Главная',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(IconsVteme.services),
+                activeIcon: Icon(IconsVteme.services_selected),
+                label: 'Сервисы',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(IconsVteme.taxi),
+                activeIcon: Icon(IconsVteme.taxi_selected),
+                label: 'Такси',
+              ),
+            ],
+            currentIndex: pageIndex,
+            selectedItemColor: Colors.purple,
+            type: BottomNavigationBarType.fixed,
+            unselectedItemColor: Colors.grey,
+            showUnselectedLabels: false,
+            showSelectedLabels: true,
+            onTap: (index) {
+              widget.wm.changePageAction(index);
+              setTitleAppBar(index);
+            },
+            iconSize: 25,
           ),
         ),
-        drawer: _drawer,
-        body: StreamedStateBuilder(
-          streamedState: widget.wm.pageIndexState,
-          builder: (context, pageIndex) => getPage(pageIndex),
-        ),
+      ),
+      drawer: _drawer,
+      body: StreamedStateBuilder(
+        streamedState: widget.wm.pageIndexState,
+        builder: (context, pageIndex) => getPage(pageIndex),
       ),
     );
   }
@@ -152,40 +178,6 @@ class _MainScreenState extends State<MainScreen> {
           break;
       }
     });
-  }
-
-  Widget _buildAppBar() {
-    return AppBar(
-      title: StreamedStateBuilder(
-        streamedState: widget.wm.titleAppBarState,
-        builder: (context, title) => title,
-      ),
-      iconTheme: IconThemeData(
-        color: Theme.of(context).accentColor,
-      ),
-      centerTitle: true,
-      actions: [
-        Container(
-          margin: const EdgeInsets.only(right: 10),
-          child: Row(children: [
-            FlutterSwitch(
-              height: 25,
-              width: 50,
-              valueFontSize: 12.0,
-              toggleSize: 16.0,
-              value: _switchState,
-              onToggle: _onChangeStateSwitch,
-              showOnOff: true,
-              inactiveText: "RU",
-              activeText: "EN",
-              activeColor: Theme.of(context).accentColor,
-              inactiveTextColor: Colors.white,
-              activeTextColor: Colors.white,
-            ),
-          ]),
-        ),
-      ],
-    );
   }
 
   void _onChangeStateSwitch(bool state) {

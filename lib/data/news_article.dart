@@ -1,30 +1,45 @@
-//TODO поменять, когда найду норм сервис для новостей
 class NewsArticle {
   final String title;
+  final String category;
   final String description;
   final String urlToImage;
   final String url;
   final String publishedAt;
-  final String content;
-  bool isFavorite = false;
+  final String date;
+  bool isFavorite;
 
   NewsArticle({
     this.title,
+    this.category,
     this.description,
     this.urlToImage,
     this.url,
     this.publishedAt,
-    this.content,
+    this.date,
+    this.isFavorite = false,
   });
+
+  Map<String, dynamic> toJson() => {
+        'title': title,
+        'category': category,
+        'description': description,
+        'urlToImage': urlToImage,
+        'publishedAt': publishedAt,
+        'url': url,
+        'date': date,
+        'isFavorite': isFavorite
+      };
 
   factory NewsArticle.fromJson(Map<String, dynamic> json) {
     return NewsArticle(
       title: json['title'],
+      category: json['category'],
       description: json['description'],
       urlToImage: json['urlToImage'] != null ? json['urlToImage'] : "",
       publishedAt: json['publishedAt'],
       url: json['url'] != null ? json['url'] : "",
-      content: json['content'],
+      date: json['date'],
+      isFavorite: json['isFavorite'],
     );
   }
 }

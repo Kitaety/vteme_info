@@ -4,6 +4,7 @@ import 'package:test_app/common/icons_vteme_icons.dart';
 import 'package:test_app/ui/currency_converter_screen/converter_list_item.dart';
 import 'package:test_app/data/currency.dart';
 import 'package:test_app/ui/currency_converter_screen/currency_converter_screen_wm.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 class CurrencyConverterScreen extends StatefulWidget {
   CurrencyConverterScreen({Key key}) : super(key: key);
@@ -71,7 +72,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
                                 },
                                 child: Container(
                                   color: index == snapshot
-                                      ? Colors.purple[200]
+                                      ? Colors.purple[50]
                                       : null,
                                   child: StreamedStateBuilder<Object>(
                                     streamedState: widget.wm.selectText,
@@ -167,7 +168,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
               text,
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 35,
+                  fontSize: ResponsiveFlutter.of(context).fontSize(5),
                   fontWeight: FontWeight.bold),
             ),
           ),
@@ -185,12 +186,14 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
         children: [
           Icon(
             Icons.error_outline,
-            size: 25,
+            size: ResponsiveFlutter.of(context).scale(20),
             color: Colors.grey[700],
           ),
           Text(
             "Информация предоставлена ресурсом www.nbrb.by",
-            style: TextStyle(fontSize: 12),
+            style: TextStyle(
+              fontSize: ResponsiveFlutter.of(context).fontSize(1.6),
+            ),
           ),
         ],
       ),
@@ -213,7 +216,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
               child: Icon(
             Icons.backspace_outlined,
             color: Colors.white,
-            size: 30,
+            size: ResponsiveFlutter.of(context).scale(30),
           )),
         ),
       ),
@@ -243,7 +246,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
                     "C",
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 60,
+                        fontSize: ResponsiveFlutter.of(context).fontSize(7),
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -263,27 +266,24 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
                   borderRadius: new BorderRadius.circular(10.0),
                 ),
                 child: Center(
-                  child: Container(
-                    height: 100,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(
-                          IconsVteme.currency,
-                          color: Colors.white,
-                          size: 50,
-                        ),
-                        Container(
-                          height: 5,
-                        ),
-                        Icon(
-                          Icons.add_circle_outline,
-                          color: Colors.white,
-                          size: 30,
-                        ),
-                      ],
-                    ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        IconsVteme.currency,
+                        color: Colors.white,
+                        size: ResponsiveFlutter.of(context).scale(40),
+                      ),
+                      Container(
+                        height: 5,
+                      ),
+                      Icon(
+                        Icons.add_circle_outline,
+                        color: Colors.white,
+                        size: ResponsiveFlutter.of(context).scale(25),
+                      ),
+                    ],
                   ),
                 ),
               ),

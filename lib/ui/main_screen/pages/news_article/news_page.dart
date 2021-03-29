@@ -27,10 +27,8 @@ class NewsPageState extends State<NewsPage> {
     } else {
       return Card(
         child: NewsArticleWidget(
-            widgetModel: new NewsArticleWidgetWm(article),
-            onTap: () {
-              widget.wm.tapAction.call(article);
-            }),
+          widgetModel: new NewsArticleWidgetWm(article),
+        ),
       );
     }
   }

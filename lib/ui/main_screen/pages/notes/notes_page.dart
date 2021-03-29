@@ -68,15 +68,6 @@ class _NoteTile extends StatelessWidget {
                 boxShadow: [
                   BoxShadow(offset: Offset(0.0, 0.25)),
                 ]),
-            child: Text(
-              note.title,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-              overflow: TextOverflow.ellipsis,
-            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

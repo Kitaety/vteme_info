@@ -3,6 +3,7 @@ import 'package:relation/relation.dart';
 import 'package:test_app/data/currency.dart';
 import 'package:test_app/ui/currency_converter_screen/add_currency_page/add_currency_page_wm.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 class AddCurrencyPage extends StatefulWidget {
   AddCurrencyPageWM wm = AddCurrencyPageWM();
@@ -43,11 +44,11 @@ class _AddCurrencyPageState extends State<AddCurrencyPage> {
                         leading: ClipRRect(
                           borderRadius: BorderRadius.circular(6),
                           child: SizedBox(
-                            width: 70,
+                            width: ResponsiveFlutter.of(context).scale(50),
                             child: SvgPicture.asset(
                               "icons/flags/svg/${list[index].abbreviation.toLowerCase().substring(0, 2)}.svg",
                               package: 'country_icons',
-                              height: 40,
+                              height: ResponsiveFlutter.of(context).scale(30),
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -57,11 +58,15 @@ class _AddCurrencyPageState extends State<AddCurrencyPage> {
                           children: [
                             Text(
                               list[index].abbreviation,
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(
+                                  fontSize: ResponsiveFlutter.of(context)
+                                      .fontSize(2.5)),
                             ),
                             Text(
                               list[index].name,
-                              style: TextStyle(fontSize: 15),
+                              style: TextStyle(
+                                  fontSize: ResponsiveFlutter.of(context)
+                                      .fontSize(2)),
                             )
                           ],
                         ),
@@ -74,7 +79,8 @@ class _AddCurrencyPageState extends State<AddCurrencyPage> {
                                       item.contains(list[index].abbreviation)
                                           ? Icons.delete
                                           : Icons.add),
-                                  iconSize: 30,
+                                  iconSize:
+                                      ResponsiveFlutter.of(context).scale(26),
                                   onPressed: () {
                                     item.contains(list[index].abbreviation)
                                         ? widget.wm.deleteCurrency(

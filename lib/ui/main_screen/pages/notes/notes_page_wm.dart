@@ -39,7 +39,6 @@ class NotesPageWM extends WidgetModel {
       for (dynamic item in n) {
         notes.add(Note(
           id: item['id'],
-          title: item['title'],
           content: item['content'],
           color: toColor(item['color']),
         ));

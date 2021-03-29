@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:test_app/data/currency.dart';
 import 'package:test_app/data/news_article.dart';
+import 'package:webfeed/webfeed.dart';
 
 class WebServices {
   static WebServices instance = WebServices();
@@ -13,22 +14,17 @@ class WebServices {
   List<NewsArticle> articles = [];
   List<Currency> currency = [];
 
-  final String _urlNews =
-      "https://newsapi.org/v2/top-headlines?country=ru&apiKey=9a0b6fe30abc41c19f15e44e3f924fce";
+  final String _urlNews = "https://news.tut.by/rss/all.rss";
   final String _urlCurrency =
       "https://www.nbrb.by/api/exrates/rates?periodicity=";
 
   var dio = new Dio();
 
-  Future<List<NewsArticle>> getNewsArticles() async {
+  Future<RssFeed> getNewsArticles() async {
     print("[WebService] Load Articles");
     final response = await dio.get(_urlNews);
-
     if (response.statusCode == 200) {
-      final result = response.data;
-      Iterable list = result['articles'];
-      articles = list.map((article) => NewsArticle.fromJson(article)).toList();
-      return articles;
+      return RssFeed.parse(response.data);
     } else {
       throw Exception("Failled to get top news");
     }

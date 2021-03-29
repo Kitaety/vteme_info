@@ -44,7 +44,6 @@ class NoteScreenWM extends WidgetModel {
       } else {
         _note.color = note.color;
         _note.content = note.content;
-        _note.title = note.title;
 
         await _editNote(_note)
             .then((value) => NavigationService.instance.goback());
@@ -55,7 +54,6 @@ class NoteScreenWM extends WidgetModel {
   }
 
   get mode => _mode;
-  get noteTitle => mode == NoteMode.Editing ? _note.title : "";
   get noteContent => mode == NoteMode.Editing ? _note.content : "";
   get noteColor => selectedColorState.value;
 

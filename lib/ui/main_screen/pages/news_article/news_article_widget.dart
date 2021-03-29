@@ -1,15 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:relation/relation.dart' as r;
+import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:test_app/common/error_handler.dart';
 import 'package:test_app/common/icons_vteme_icons.dart';
 import 'package:test_app/common/widget_model.dart';
 import 'package:test_app/data/news_article.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 ///NewsArticleWidget - блок для показа статьи в списке
 class NewsArticleWidget extends StatefulWidget {
   NewsArticleWidget({
-    @required this.onTap,
     WidgetModel widgetModel,
     Key key,
   })  : this.wm = widgetModel,
@@ -17,7 +18,6 @@ class NewsArticleWidget extends StatefulWidget {
           key: key,
         );
 
-  final Function onTap;
   final NewsArticleWidgetWm wm;
 
   @override
@@ -34,75 +34,100 @@ class NewsArticleWidgetState extends State<NewsArticleWidget> {
       builder: (context, NewsArticle article) => ClipRRect(
         borderRadius: BorderRadius.circular(5),
         child: Container(
-          height: 130,
-          child: Row(
-            children: [
-              Container(
-                child: Stack(
-                  children: [
-                    SizedBox(
-                      width: 130,
-                      height: 130,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(5),
-                        child: Image(
-                          errorBuilder: (context, error, stackTrace) => Image(
+          height: ResponsiveFlutter.of(context).scale(130),
+          child: InkWell(
+            onTap: () async {
+              if (await canLaunch(article.url)) {
+                await launch(
+                  article.url,
+                  forceSafariVC: true,
+                  forceWebView: false,
+                );
+              } else {
+                print(article.url);
+                print("else");
+              }
+            },
+            child: Row(
+              children: [
+                Container(
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        width: ResponsiveFlutter.of(context).scale(130),
+                        height: ResponsiveFlutter.of(context).scale(130),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(5),
+                          child: Image(
+                            errorBuilder: (context, error, stackTrace) => Image(
+                              fit: BoxFit.fitHeight,
+                              image: AssetImage('assets/images/logo.png'),
+                            ),
                             fit: BoxFit.fitHeight,
-                            image: AssetImage('assets/images/logo.png'),
-                          ),
-                          fit: BoxFit.fitHeight,
-                          image: article.urlToImage != ""
-                              ? CachedNetworkImageProvider(
-                                  article.urlToImage,
-                                )
-                              : AssetImage('assets/images/logo.png'),
-                        ),
-                      ),
-                    ),
-                    r.StreamedStateBuilder(
-                      streamedState: widget.wm.favoriteState,
-                      builder: (context, isFavorite) => SizedBox(
-                        width: 30,
-                        height: 30,
-                        child: IconButton(
-                          padding: EdgeInsets.all(0),
-                          alignment: Alignment.topLeft,
-                          onPressed: widget.wm.favoriteTapAction,
-                          iconSize: 30,
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          icon: Icon(
-                            isFavorite
-                                ? IconsVteme.bookmark_selected
-                                : IconsVteme.bookmark,
-                            color: isFavorite
-                                ? Theme.of(context).accentColor
-                                : Colors.white,
+                            image: article.urlToImage != ""
+                                ? CachedNetworkImageProvider(
+                                    article.urlToImage,
+                                  )
+                                : AssetImage('assets/images/logo.png'),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                      r.StreamedStateBuilder(
+                        streamedState: widget.wm.favoriteState,
+                        builder: (context, isFavorite) => SizedBox(
+                          width: ResponsiveFlutter.of(context).scale(30),
+                          height: ResponsiveFlutter.of(context).scale(30),
+                          child: IconButton(
+                            padding: EdgeInsets.all(0),
+                            alignment: Alignment.topLeft,
+                            onPressed: widget.wm.favoriteTapAction,
+                            iconSize: ResponsiveFlutter.of(context).scale(30),
+                            splashColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            icon: Icon(
+                              isFavorite
+                                  ? IconsVteme.bookmark_selected
+                                  : IconsVteme.bookmark,
+                              color: isFavorite
+                                  ? Theme.of(context).accentColor
+                                  : Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Expanded(
-                child: Material(
-                  child: InkWell(
-                    onTap: widget.onTap,
+                Expanded(
+                  child: Material(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 8),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            child: Text(
-                              article.title,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 18,
-                              ),
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  article.title,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: ResponsiveFlutter.of(context)
+                                        .fontSize(2.2),
+                                  ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                Text(
+                                  article.category,
+                                  style: TextStyle(
+                                    fontSize: ResponsiveFlutter.of(context)
+                                        .fontSize(1.5),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Container(
@@ -112,9 +137,10 @@ class NewsArticleWidgetState extends State<NewsArticleWidget> {
                                   : "",
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
-                                fontSize: 14,
+                                fontSize:
+                                    ResponsiveFlutter.of(context).fontSize(2),
                               ),
-                              maxLines: 2,
+                              maxLines: 3,
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -126,8 +152,20 @@ class NewsArticleWidgetState extends State<NewsArticleWidget> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text("Пинск"),
-                                    Text(article.publishedAt)
+                                    Text(
+                                      article.publishedAt,
+                                      style: TextStyle(
+                                        fontSize: ResponsiveFlutter.of(context)
+                                            .fontSize(1.5),
+                                      ),
+                                    ),
+                                    Text(
+                                      article.date,
+                                      style: TextStyle(
+                                        fontSize: ResponsiveFlutter.of(context)
+                                            .fontSize(1.5),
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
@@ -137,9 +175,9 @@ class NewsArticleWidgetState extends State<NewsArticleWidget> {
                       ),
                     ),
                   ),
-                ),
-              )
-            ],
+                )
+              ],
+            ),
           ),
         ),
       ),

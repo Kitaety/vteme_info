@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:relation/relation.dart';
 import 'package:test_app/data/currency.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 class ConverterListItem extends StatelessWidget {
   final Currency currency;
@@ -21,11 +22,11 @@ class ConverterListItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(6),
             child: SizedBox(
-              width: 70,
+              width: ResponsiveFlutter.of(context).scale(50),
               child: SvgPicture.asset(
                 "icons/flags/svg/${currency.abbreviation.toLowerCase().substring(0, 2)}.svg",
                 package: 'country_icons',
-                height: 40,
+                height: ResponsiveFlutter.of(context).scale(30),
                 fit: BoxFit.fill,
               ),
             ),
@@ -34,7 +35,8 @@ class ConverterListItem extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
               currency.abbreviation,
-              style: TextStyle(fontSize: 25),
+              style: TextStyle(
+                  fontSize: ResponsiveFlutter.of(context).fontSize(2.7)),
             ),
           ),
           Expanded(
@@ -50,7 +52,9 @@ class ConverterListItem extends StatelessWidget {
                   builder: (context, snapshot) {
                     return Text(
                       text == null ? "$snapshot".replaceAll(".", ",") : text,
-                      style: TextStyle(fontSize: 20),
+                      style: TextStyle(
+                          fontSize:
+                              ResponsiveFlutter.of(context).fontSize(2.2)),
                     );
                   }),
             ),
