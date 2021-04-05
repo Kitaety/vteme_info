@@ -155,14 +155,23 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
     return Expanded(
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 2, horizontal: 2),
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             widget.wm.tapKey.accept(text);
           },
-          color: Theme.of(context).accentColor,
-          shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Theme.of(context).accentColor),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(10.0),
+              ),
+            ),
           ),
+          // color: Theme.of(context).accentColor,
+          // shape: new RoundedRectangleBorder(
+          //   borderRadius: new BorderRadius.circular(10.0),
+          // ),
           child: Center(
             child: Text(
               text,
