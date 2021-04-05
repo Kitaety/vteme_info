@@ -213,14 +213,23 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
     return Expanded(
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 2, horizontal: 2),
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () {
             widget.wm.tapKey.accept('d');
           },
-          color: Theme.of(context).accentColor,
-          shape: new RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0),
+          style: ButtonStyle(
+            backgroundColor:
+                MaterialStateProperty.all<Color>(Theme.of(context).accentColor),
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+              new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(10.0),
+              ),
+            ),
           ),
+          // color: Theme.of(context).accentColor,
+          // shape: new RoundedRectangleBorder(
+          //   borderRadius: new BorderRadius.circular(10.0),
+          // ),
           child: Center(
               child: Icon(
             Icons.backspace_outlined,
@@ -242,14 +251,23 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
             flex: 3,
             child: Container(
               margin: EdgeInsets.only(bottom: 5),
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: () {
                   widget.wm.tapKey("c");
                 },
-                color: Colors.red[200],
-                shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(10.0),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.red[200]),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    ),
+                  ),
                 ),
+                // color: Colors.red[200],
+                // shape: new RoundedRectangleBorder(
+                //   borderRadius: new BorderRadius.circular(10.0),
+                // ),
                 child: Center(
                   child: Text(
                     "C",
@@ -266,14 +284,23 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
             flex: 7,
             child: Container(
               margin: EdgeInsets.only(top: 5),
-              child: RaisedButton(
+              child: ElevatedButton(
                 onPressed: () {
                   widget.wm.tapOnAddBtn();
                 },
-                color: Colors.orange[300],
-                shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(10.0),
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(Colors.orange[300]),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(10.0),
+                    ),
+                  ),
                 ),
+                // color: Colors.orange[300],
+                // shape: new RoundedRectangleBorder(
+                //   borderRadius: new BorderRadius.circular(10.0),
+                // ),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -34,17 +34,7 @@ class NotesPageWM extends WidgetModel {
   Future<void> loadNotesList() async {
     noteState.loading();
     try {
-      List<Map<String, dynamic>> n = await NoteStoregeService.getListNote();
-      List<Note> notes = [];
-      for (dynamic item in n) {
-        notes.add(Note(
-          id: item['id'],
-          content: item['content'],
-          color: toColor(item['color']),
-        ));
-
-        Colors.purpleAccent.value.toRadixString(16);
-      }
+      List<Note> notes = await NoteStoregeService.getListNote();
       noteState.content(notes);
     } on Exception catch (e) {
       noteState.error();

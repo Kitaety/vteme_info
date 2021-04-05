@@ -8,6 +8,8 @@ import 'package:vteme_info/common/widget_model.dart';
 import 'package:vteme_info/data/news_article.dart';
 import 'package:vteme_info/utils/navigation_service.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vteme_info/utils/notifications_helper.dart';
+import 'package:vteme_info/main.dart';
 
 ///NewsArticleWidget - блок для показа статьи в списке
 class NewsArticleWidget extends StatefulWidget {

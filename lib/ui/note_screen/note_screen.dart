@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:relation/relation.dart';
 import 'package:vteme_info/data/note.dart';
 import 'package:vteme_info/utils/navigation_service.dart';
@@ -107,9 +109,11 @@ class _NoteScreenState extends State<NoteScreen> {
             SizedBox(
               width: 200,
               height: 50,
-              child: FlatButton(
-                color: Theme.of(context).accentColor,
-                disabledColor: Colors.grey[400],
+              child: TextButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                      Theme.of(context).accentColor),
+                ),
                 onPressed: !isEnableButton
                     ? null
                     : () {
@@ -174,13 +178,18 @@ class _NoteScreenState extends State<NoteScreen> {
   }
 
   bool a = true;
-  //TODO доделать включение/выключение напоминания
   Widget _buildAlarmCheckButton() {
     return InkWell(
       onTap: () {
-        setState(() {
-          a = !a;
-        });
+        DatePicker.showDateTimePicker(context,
+            showTitleActions: true,
+            minTime: DateTime.now(),
+            maxTime: DateTime(9999, 1, 1), onChanged: (date) {
+          print('change $date');
+        }, onConfirm: (date) {
+          widget.wm.changeDateNotification(date);
+          print('confirm $date');
+        }, currentTime: DateTime.now(), locale: LocaleType.ru);
       },
       child: Container(
         decoration: BoxDecoration(
@@ -197,9 +206,15 @@ class _NoteScreenState extends State<NoteScreen> {
               Icons.notifications_active_outlined,
               color: Theme.of(context).accentColor,
             ),
-            SizedBox(
-                width: 120,
-                child: a ? Text("Не напоминать") : Text("03-02-2021 16:53")),
+            StreamedStateBuilder<DateTime>(
+                streamedState: widget.wm.dateNotificationState,
+                builder: (context, date) {
+                  return SizedBox(
+                      width: 120,
+                      child: date == null
+                          ? Text("Напомнить")
+                          : Text(DateFormat("dd-MM-yyyy HH:mm").format(date)));
+                }),
           ],
         ),
       ),
@@ -226,18 +241,18 @@ class _NoteScreenState extends State<NoteScreen> {
               ),
             ),
             actions: [
-              FlatButton(
+              TextButton(
+                onPressed: NavigationService.instance.goback,
                 child: Text(
                   "ОТМЕНА",
                 ),
-                onPressed: NavigationService.instance.goback,
               ),
-              FlatButton(
-                child: Text("ПОДТВЕРДИТЬ"),
-                onPressed: () {
-                  NavigationService.instance.goback(results: _color);
-                },
-              )
+              TextButton(
+                onPressed: NavigationService.instance.goback(results: _color),
+                child: Text(
+                  "ПОДТВЕРДИТЬ",
+                ),
+              ),
             ],
           );
         });
@@ -250,18 +265,22 @@ class _NoteScreenState extends State<NoteScreen> {
               title: Text("Удаление заметки"),
               content: Text("Вы точно хотите удалить данную заметку?"),
               actions: [
-                FlatButton(
-                  child: Text("Подтвердить"),
+                TextButton(
                   onPressed: () {
                     NavigationService.instance.goback();
                     widget.wm.deleteNote();
                   },
+                  child: Text(
+                    "Подтвердить",
+                  ),
                 ),
-                FlatButton(
-                  child: Text("Отмена"),
+                TextButton(
                   onPressed: () {
                     NavigationService.instance.goback();
                   },
+                  child: Text(
+                    "Отмена",
+                  ),
                 ),
               ],
             ));

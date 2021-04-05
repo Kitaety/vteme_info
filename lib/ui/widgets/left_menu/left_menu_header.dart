@@ -47,14 +47,27 @@ class _LeftMenuHeaderState extends State<LeftMenuHeader> {
                               ? Container(
                                   child: ButtonTheme(
                                     minWidth: double.infinity,
-                                    child: RaisedButton(
-                                      shape: new RoundedRectangleBorder(
-                                          borderRadius:
-                                          new BorderRadius.circular(10.0),
-                                      ),
+                                    child: ElevatedButton(
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  Theme.of(context)
+                                                      .accentColor),
+                                          shape: MaterialStateProperty.all<
+                                              RoundedRectangleBorder>(
+                                            new RoundedRectangleBorder(
+                                              borderRadius:
+                                                  new BorderRadius.circular(
+                                                      10.0),
+                                            ),
+                                          ),
+                                          textStyle: MaterialStateProperty.all<
+                                              TextStyle>(
+                                            TextStyle(
+                                                color: Theme.of(context)
+                                                    .primaryColor),
+                                          )),
                                       onPressed: _onTapSingBut,
-                                      color: Theme.of(context).accentColor,
-                                      textColor: Theme.of(context).primaryColor,
                                       child: Text("Войти"),
                                     ),
                                   ),

@@ -12,9 +12,9 @@ class _NewsArticlePageState extends State<NewsArticleScreen> {
   final flutterWebViewPlugin = FlutterWebviewPlugin();
   @override
   void dispose() {
-    super.dispose();
     flutterWebViewPlugin.close();
     flutterWebViewPlugin.dispose();
+    super.dispose();
   }
 
   @override
@@ -22,10 +22,10 @@ class _NewsArticlePageState extends State<NewsArticleScreen> {
     final NewsArticle article =
         ModalRoute.of(context).settings.arguments as NewsArticle;
     return WebviewScaffold(
+      key: widget.key,
       url: article.url,
-      withZoom: true,
-      withLocalStorage: true,
-      hidden: true,
+      appCacheEnabled: true,
+      hidden: false,
       appBar: new AppBar(
         title: new Text(article.title),
       ),

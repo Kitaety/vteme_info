@@ -63,10 +63,9 @@ class NewsPageState extends State<NewsPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       const Text('Произошла ошибка'),
-                      FlatButton(
-                        onPressed: widget.wm.refresNewsArticle,
-                        child: const Text('Обновить'),
-                      ),
+                      TextButton(
+                          onPressed: widget.wm.refresNewsArticle,
+                          child: const Text('Обновить')),
                     ],
                   ),
                 ),
@@ -85,12 +84,6 @@ class NewsPageState extends State<NewsPage> {
                     children: buildItemList(articles),
                     clipBehavior: Clip.antiAlias,
                   ),
-                  // child: ListView.builder(
-                  //   padding: EdgeInsets.symmetric(horizontal: 10),
-                  //   clipBehavior: Clip.antiAlias,
-                  //   itemBuilder: (ctx, i) {
-                  //   },
-                  // ),
                 ),
               ),
             ),

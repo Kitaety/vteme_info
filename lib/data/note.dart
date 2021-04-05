@@ -17,15 +17,11 @@ import 'package:flutter/material.dart';
 
 class Note {
   static const Color defaultColor = Colors.purpleAccent;
-  final int id;
+  int id;
   String content;
   Color color;
 
-  Note({
-    this.id,
-    this.content,
-    this.color,
-  });
+  Note({this.id, this.content, this.color});
 
   Map<String, dynamic> toMap(bool forUpdate) {
     var data = {
