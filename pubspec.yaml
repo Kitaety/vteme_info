@@ -27,8 +27,8 @@ dependencies:
   flutter_switch: ^0.2.0
   flutter_webview_plugin: ^0.3.11
   flutter_widget_from_html: ^0.5.2+1
+  google_mobile_ads: ^0.12.1
   intl: ^0.16.0
-  native_ads: ^0.5.0
   provider: ^4.1.2
   relation: ^0.0.2
   responsive_flutter: ^0.0.4
@@ -41,7 +41,6 @@ dependency_overrides:
   intl: ^0.17.0
 #   shared_preferences: ^2.0.0-nullsafety
 #   args: ^2.0.0
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

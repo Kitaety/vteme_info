@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 
-//TODO доделать баннер
 class VipAdBlock extends StatelessWidget {
+  final String img;
+
+  VipAdBlock(this.img);
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -11,7 +14,7 @@ class VipAdBlock extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(6),
           child: Image(
-            image: AssetImage("assets/images/rus.jpg"),
+            image: AssetImage(img),
             fit: BoxFit.contain,
           ),
         ),

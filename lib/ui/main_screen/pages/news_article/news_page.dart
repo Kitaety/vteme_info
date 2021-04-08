@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:relation/relation.dart';
 import 'package:vteme_info/data/news_article.dart';
 import 'package:vteme_info/ui/widgets/slide_ad_block.dart';
+import 'package:vteme_info/utils/ad_mob_service.dart';
 import 'news_article_widget.dart';
 import 'news_page_wm.dart';
-import 'vip_ad_block.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class NewsPage extends StatefulWidget {
@@ -25,7 +26,7 @@ class NewsPageState extends State<NewsPage> {
     for (int i = 0; i < articles.length; i++) {
       if (i > 0 && i % modCountAd == 0) {
         //TODO доделать баннер рекламы
-        results.add(VipAdBlock());
+        results.add(Provider.of<AdMobService>(context).getVipBanner());
       } else {
         results.add(Card(
           child: NewsArticleWidget(
