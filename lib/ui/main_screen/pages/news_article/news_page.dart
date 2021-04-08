@@ -5,6 +5,7 @@ import 'package:vteme_info/ui/widgets/slide_ad_block.dart';
 import 'news_article_widget.dart';
 import 'news_page_wm.dart';
 import 'vip_ad_block.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class NewsPage extends StatefulWidget {
   final NewsPageWM wm = new NewsPageWM();
@@ -62,10 +63,10 @@ class NewsPageState extends State<NewsPage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      const Text('Произошла ошибка'),
+                      Text('error'.tr()),
                       TextButton(
                           onPressed: widget.wm.refresNewsArticle,
-                          child: const Text('Обновить')),
+                          child: Text('refresh'.tr())),
                     ],
                   ),
                 ),

@@ -9,6 +9,7 @@ import 'package:responsive_flutter/responsive_flutter.dart';
 import 'main_screen_wm.dart';
 import 'pages/news_article/news_page.dart';
 import 'pages/sevices/services_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class MainScreen extends StatefulWidget {
   final MainScreenWM wm = new MainScreenWM();
@@ -31,6 +32,9 @@ class _MainScreenState extends State<MainScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     setTitleAppBar(defaultPageIndex);
+    setState(() {
+      _switchState = EasyLocalization.of(context).locale.toString() == "en_US";
+    });
   }
 
   @override
@@ -56,10 +60,10 @@ class _MainScreenState extends State<MainScreen> {
             margin: const EdgeInsets.only(right: 10),
             child: Row(children: [
               FlutterSwitch(
-                height: 25,
-                width: 50,
+                height: ResponsiveFlutter.of(context).wp(7),
+                width: ResponsiveFlutter.of(context).wp(14),
                 valueFontSize: ResponsiveFlutter.of(context).fontSize(1.2),
-                toggleSize: 16.0,
+                toggleSize: ResponsiveFlutter.of(context).wp(5),
                 value: _switchState,
                 onToggle: _onChangeStateSwitch,
                 showOnOff: true,
@@ -81,31 +85,31 @@ class _MainScreenState extends State<MainScreen> {
             unselectedIconTheme: IconThemeData(
               size: 30,
             ),
-            items: const <BottomNavigationBarItem>[
+            items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(IconsVteme.bookmark),
                 activeIcon: Icon(IconsVteme.bookmark_selected),
-                label: 'Закладки',
+                label: "favorites".tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(IconsVteme.notebook),
                 activeIcon: Icon(IconsVteme.notebook_selected),
-                label: 'Заметки',
+                label: 'notes'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(IconsVteme.home),
                 activeIcon: Icon(IconsVteme.home_selected),
-                label: 'Главная',
+                label: 'home'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(IconsVteme.services),
                 activeIcon: Icon(IconsVteme.services_selected),
-                label: 'Сервисы',
+                label: 'services'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Icon(IconsVteme.taxi),
                 activeIcon: Icon(IconsVteme.taxi_selected),
-                label: 'Такси',
+                label: 'taxi'.tr(),
               ),
             ],
             currentIndex: pageIndex,
@@ -148,13 +152,13 @@ class _MainScreenState extends State<MainScreen> {
   String getPageName(int index) {
     switch (index) {
       case 0:
-        return "Закладки";
+        return "favorites".tr();
       case 1:
-        return "Заметки";
+        return "notes".tr();
       case 3:
-        return "Сервисы";
+        return "services".tr();
       case 4:
-        return "Такси";
+        return "taxi".tr();
       default:
         return "VTEME";
     }
@@ -165,7 +169,7 @@ class _MainScreenState extends State<MainScreen> {
       switch (index) {
         case 2:
           setTitle(Text(
-            "Пинск",
+            "pinsk".tr(),
             style: TextStyle(color: Theme.of(context).accentColor),
           ));
           break;
@@ -179,7 +183,10 @@ class _MainScreenState extends State<MainScreen> {
     });
   }
 
+  //todo сохранение выбранной локали
   void _onChangeStateSwitch(bool state) {
+    EasyLocalization.of(context).locale =
+        state ? Locale("en", "US") : Locale("ru", "RU");
     setState(() {
       _switchState = state;
     });

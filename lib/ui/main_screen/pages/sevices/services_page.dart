@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vteme_info/common/icons_vteme_icons.dart';
 import 'package:vteme_info/utils/navigation_service.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ServicesPage extends StatefulWidget {
   ServicesPage({Key key}) : super(key: key);
@@ -39,7 +40,7 @@ class _ServicesPageState extends State<ServicesPage> {
                     height: 10,
                   ),
                   Text(
-                    "Конвертер\nвалют",
+                    "currency_converter".tr(),
                     maxLines: 2,
                     textAlign: TextAlign.center,
                     style: TextStyle(

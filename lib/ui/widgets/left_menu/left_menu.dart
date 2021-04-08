@@ -3,6 +3,7 @@ import 'package:vteme_info/common/icons_vteme_icons.dart';
 import '../spacer_list_item.dart';
 import 'left_menu_header.dart';
 import 'left_menu_item.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 const Duration drawerAnimationDuration = Duration(milliseconds: 250);
 
@@ -31,77 +32,77 @@ class _LeftMenuState extends State<LeftMenu>
         children: [
           LeftMenuHeader(),
           LeftMenuItem(
-            title: "В помощь туристу",
+            title: "tourist_assistance".tr(),
             iconData: IconsVteme.tourism,
             onTap: () {},
           ),
           SpacerListItem(),
           LeftMenuItem(
             iconData: IconsVteme.bus,
-            title: "Расписание городского транспорта",
+            title: "urban_transport".tr(),
             onTap: () {},
           ),
           SpacerListItem(),
           LeftMenuItem(
             iconData: IconsVteme.hostel,
-            title: "Места размещения",
+            title: "hotels".tr(),
             onTap: () {},
           ),
           LeftMenuItem(
             iconData: IconsVteme.food_points,
-            title: "Пункты питания",
+            title: "food_points".tr(),
             onTap: () {},
           ),
           LeftMenuItem(
             iconData: IconsVteme.plant,
-            title: "Каталог организаций",
+            title: "organizations".tr(),
             onTap: () {},
           ),
           LeftMenuItem(
             iconData: IconsVteme.coin,
-            title: "Банковские и финансовые услуги",
+            title: "banking_services".tr(),
             onTap: () {},
           ),
           LeftMenuItem(
             iconData: IconsVteme.heartbeat,
-            title: "Медицинские учреждения",
+            title: "medical_institutions".tr(),
             onTap: () {},
           ),
           LeftMenuItem(
             iconData: IconsVteme.entertainment,
-            title: "Отдых и развлечения",
+            title: "entertainment".tr(),
             onTap: () {},
           ),
           LeftMenuItem(
             iconData: IconsVteme.trade,
-            title: "Магазины",
+            title: "shops".tr(),
             onTap: () {},
           ),
           SpacerListItem(),
           LeftMenuItem(
             iconData: IconsVteme.announcements,
-            title: "Объявления",
+            title: "ads".tr(),
             onTap: () {},
           ),
           LeftMenuItem(
             iconData: IconsVteme.my_announcements,
-            title: "Мои объявления",
+            title: "my_ads".tr(),
             onTap: () {},
           ),
           SpacerListItem(),
           LeftMenuItem(
             iconData: IconsVteme.warning,
-            title: "Сообщить об ошибке",
+            title: "report".tr(),
             onTap: () {},
           ),
           LeftMenuItem(
             iconData: IconsVteme.settings,
-            title: "О разработчике",
+            title: "about".tr(),
             onTap: () {},
           ),
           LeftMenuItem(
             iconData: IconsVteme.share,
-            title: "Рассказать друзьям",
+            title: "share".tr(),
             onTap: () {},
           ),
         ],

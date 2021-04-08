@@ -7,6 +7,7 @@ import 'package:vteme_info/data/note.dart';
 import 'package:vteme_info/utils/navigation_service.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'note_screen_wm.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class NoteScreen extends StatefulWidget {
   NoteScreenWM wm;
@@ -29,9 +30,8 @@ class _NoteScreenState extends State<NoteScreen> {
     _contentController = TextEditingController(
       text: widget.wm.noteContent,
     );
-    _title = widget.wm.mode == NoteMode.Adding
-        ? "Добавить заметку"
-        : "Изменить заметку";
+    _title =
+        widget.wm.mode == NoteMode.Adding ? "note_add".tr() : "note_edit".tr();
 
     isEnableButton = _contentController.value.text.isNotEmpty;
   }
@@ -84,7 +84,7 @@ class _NoteScreenState extends State<NoteScreen> {
                   maxLines: null,
                   keyboardType: TextInputType.multiline,
                   decoration: InputDecoration(
-                    hintText: 'Содержание заметки',
+                    hintText: 'note_content'.tr(),
                     border: InputBorder.none,
                   ),
                   onChanged: (text) {
@@ -123,7 +123,7 @@ class _NoteScreenState extends State<NoteScreen> {
                         ));
                       },
                 child: Text(
-                  "Сохранить",
+                  "save".tr(),
                   style: TextStyle(
                     color: Theme.of(context).primaryColor,
                     fontSize: 18,
@@ -212,7 +212,7 @@ class _NoteScreenState extends State<NoteScreen> {
                   return SizedBox(
                       width: 120,
                       child: date == null
-                          ? Text("Напомнить")
+                          ? Text("remind".tr())
                           : Text(DateFormat("dd-MM-yyyy HH:mm").format(date)));
                 }),
           ],
@@ -223,12 +223,13 @@ class _NoteScreenState extends State<NoteScreen> {
 
   Future<Color> _showColorPicker(context, Color selectedColor) {
     Color _color = selectedColor;
-    return showDialog(
+    print("debug");
+    return showDialog<Color>(
         context: context,
         builder: (_) {
           return AlertDialog(
             contentPadding: const EdgeInsets.all(8),
-            title: Text("Выбор цвета"),
+            title: Text("color_selection".tr()),
             content: Container(
               height: 250,
               child: MaterialColorPicker(
@@ -244,13 +245,14 @@ class _NoteScreenState extends State<NoteScreen> {
               TextButton(
                 onPressed: NavigationService.instance.goback,
                 child: Text(
-                  "ОТМЕНА",
+                  "cancel".tr(),
                 ),
               ),
               TextButton(
-                onPressed: NavigationService.instance.goback(results: _color),
+                onPressed: () =>
+                    NavigationService.instance.goback(results: _color),
                 child: Text(
-                  "ПОДТВЕРДИТЬ",
+                  "ok".tr(),
                 ),
               ),
             ],
@@ -262,8 +264,8 @@ class _NoteScreenState extends State<NoteScreen> {
     showDialog(
         context: context,
         builder: (_) => AlertDialog(
-              title: Text("Удаление заметки"),
-              content: Text("Вы точно хотите удалить данную заметку?"),
+              title: Text("note_delete".tr()),
+              content: Text("note_delete_q".tr()),
               actions: [
                 TextButton(
                   onPressed: () {
@@ -271,7 +273,7 @@ class _NoteScreenState extends State<NoteScreen> {
                     widget.wm.deleteNote();
                   },
                   child: Text(
-                    "Подтвердить",
+                    "ok".tr(),
                   ),
                 ),
                 TextButton(
@@ -279,7 +281,7 @@ class _NoteScreenState extends State<NoteScreen> {
                     NavigationService.instance.goback();
                   },
                   child: Text(
-                    "Отмена",
+                    "cancel".tr(),
                   ),
                 ),
               ],

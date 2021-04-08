@@ -34,15 +34,6 @@ class _SlideAdBlockState extends State<SlideAdBlock> {
       Container(
         child: Text("aa"),
       ),
-      // Container(
-      //     color: Colors.red,
-      //     child: NativeAdView(
-      //       androidParam: AndroidParam()
-      //         ..placementId = "ca-app-pub-1774878275661991/7408321775"
-      //         ..packageName = "com.example.test_app"
-      //         ..layoutName = "ad_banner"
-      //         ..attributionText = "AD",
-      //     )),
       Container(
         color: Colors.blue,
         child: Center(

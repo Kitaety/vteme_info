@@ -1,8 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:vteme_info/ui/currency_converter_screen/currency_converter_screen.dart';
 import 'package:vteme_info/ui/main_screen/main_screen.dart';
 import 'package:vteme_info/utils/navigation_service.dart';
-
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'news_article_screen/news_article_screen.dart';
 import 'note_screen/note_screen.dart';
 import 'package:vteme_info/ui/currency_converter_screen/add_currency_page/add_currency_page.dart';
@@ -35,6 +36,13 @@ class _AppState extends State<App> {
         accentColor: Colors.purple,
         primaryColor: Colors.white,
       ),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        EasyLocalization.of(context).delegate,
+      ],
+      supportedLocales: EasyLocalization.of(context).supportedLocales,
+      locale: EasyLocalization.of(context).locale,
     );
   }
 }

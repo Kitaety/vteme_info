@@ -5,6 +5,7 @@ import 'package:vteme_info/ui/currency_converter_screen/converter_list_item.dart
 import 'package:vteme_info/data/currency.dart';
 import 'package:vteme_info/ui/currency_converter_screen/currency_converter_screen_wm.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class CurrencyConverterScreen extends StatefulWidget {
   CurrencyConverterScreen({Key key}) : super(key: key);
@@ -36,7 +37,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
         centerTitle: true,
         iconTheme: IconThemeData(color: Theme.of(context).accentColor),
         title: Text(
-          "Конвертер валют",
+          "currency_converter".tr(),
           style: TextStyle(color: Theme.of(context).accentColor),
         ),
       ),
@@ -168,10 +169,6 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
               ),
             ),
           ),
-          // color: Theme.of(context).accentColor,
-          // shape: new RoundedRectangleBorder(
-          //   borderRadius: new BorderRadius.circular(10.0),
-          // ),
           child: Center(
             child: Text(
               text,
@@ -199,7 +196,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
             color: Colors.grey[700],
           ),
           Text(
-            "Информация предоставлена ресурсом www.nbrb.by",
+            "nbrb".tr(),
             style: TextStyle(
               fontSize: ResponsiveFlutter.of(context).fontSize(1.6),
             ),
@@ -226,10 +223,6 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
               ),
             ),
           ),
-          // color: Theme.of(context).accentColor,
-          // shape: new RoundedRectangleBorder(
-          //   borderRadius: new BorderRadius.circular(10.0),
-          // ),
           child: Center(
               child: Icon(
             Icons.backspace_outlined,
@@ -264,10 +257,6 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
                     ),
                   ),
                 ),
-                // color: Colors.red[200],
-                // shape: new RoundedRectangleBorder(
-                //   borderRadius: new BorderRadius.circular(10.0),
-                // ),
                 child: Center(
                   child: Text(
                     "C",
@@ -297,10 +286,6 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
                     ),
                   ),
                 ),
-                // color: Colors.orange[300],
-                // shape: new RoundedRectangleBorder(
-                //   borderRadius: new BorderRadius.circular(10.0),
-                // ),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,

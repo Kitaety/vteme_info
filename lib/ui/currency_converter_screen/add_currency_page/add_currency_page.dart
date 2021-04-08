@@ -4,6 +4,7 @@ import 'package:vteme_info/data/currency.dart';
 import 'package:vteme_info/ui/currency_converter_screen/add_currency_page/add_currency_page_wm.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class AddCurrencyPage extends StatefulWidget {
   final AddCurrencyPageWM wm = AddCurrencyPageWM();
@@ -30,7 +31,7 @@ class _AddCurrencyPageState extends State<AddCurrencyPage> {
             iconTheme: IconThemeData(
               color: Theme.of(context).accentColor,
             ),
-            title: Text("Настройки конвертера",
+            title: Text("сonverter_settings".tr(),
                 style: TextStyle(color: Theme.of(context).accentColor)),
           ),
           body: EntityStateBuilder<List<Currency>>(

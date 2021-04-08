@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:provider/provider.dart';
@@ -11,9 +12,10 @@ NotificationAppLaunchDetails notifLaunch;
 final FlutterLocalNotificationsPlugin notifsPlugin =
     FlutterLocalNotificationsPlugin();
 
-void main() async {
+Future<void> main() async {
   // TestWidgetsFlutterBinding.ensureInitialized();
   WidgetsFlutterBinding.ensureInitialized();
+
   notifLaunch = await notifsPlugin.getNotificationAppLaunchDetails();
   await initNotifications(notifsPlugin);
   requestIOSPermissions(notifsPlugin);
@@ -22,14 +24,18 @@ void main() async {
             Provider(
               create: (_) => {},
               child: MultiProvider(
-                providers: [
-                  Provider(create: (context) => WebServices()),
-                  Provider(
-                    create: (context) => Navigator.of(context),
-                  )
-                ],
-                child: App(),
-              ),
+                  providers: [
+                    Provider(create: (context) => WebServices()),
+                    Provider(
+                      create: (context) => Navigator.of(context),
+                    )
+                  ],
+                  child: EasyLocalization(
+                    supportedLocales: [Locale('en', 'US'), Locale('ru', 'RU')],
+                    path: 'assets/translations',
+                    fallbackLocale: Locale('en', 'US'),
+                    child: App(),
+                  )),
             ),
           ));
 }

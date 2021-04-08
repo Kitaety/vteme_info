@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class LeftMenuHeader extends StatefulWidget {
   @override
@@ -45,31 +46,29 @@ class _LeftMenuHeaderState extends State<LeftMenuHeader> {
                         Container(
                           child: !_isLogin
                               ? Container(
-                                  child: ButtonTheme(
-                                    minWidth: double.infinity,
-                                    child: ElevatedButton(
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  Theme.of(context)
-                                                      .accentColor),
-                                          shape: MaterialStateProperty.all<
-                                              RoundedRectangleBorder>(
-                                            new RoundedRectangleBorder(
-                                              borderRadius:
-                                                  new BorderRadius.circular(
-                                                      10.0),
-                                            ),
+                                  child: ElevatedButton(
+                                    style: ButtonStyle(
+                                        fixedSize:
+                                            MaterialStateProperty.all<Size>(
+                                                Size(150, 30)),
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                Theme.of(context).accentColor),
+                                        shape: MaterialStateProperty.all<
+                                            RoundedRectangleBorder>(
+                                          new RoundedRectangleBorder(
+                                            borderRadius:
+                                                new BorderRadius.circular(10.0),
                                           ),
-                                          textStyle: MaterialStateProperty.all<
-                                              TextStyle>(
-                                            TextStyle(
-                                                color: Theme.of(context)
-                                                    .primaryColor),
-                                          )),
-                                      onPressed: _onTapSingBut,
-                                      child: Text("Войти"),
-                                    ),
+                                        ),
+                                        textStyle: MaterialStateProperty.all<
+                                            TextStyle>(
+                                          TextStyle(
+                                              color: Theme.of(context)
+                                                  .primaryColor),
+                                        )),
+                                    onPressed: _onTapSingBut,
+                                    child: Text("login".tr()),
                                   ),
                                 )
                               : Material(
@@ -92,7 +91,7 @@ class _LeftMenuHeaderState extends State<LeftMenuHeader> {
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Text(
-                                                    "Мой профиль",
+                                                    "my_profile".tr(),
                                                     overflow:
                                                         TextOverflow.ellipsis,
                                                     maxLines: 1,
@@ -122,7 +121,7 @@ class _LeftMenuHeaderState extends State<LeftMenuHeader> {
                         Container(
                           width: double.infinity,
                           child: Text(
-                            "Справочно - информационный каталог твоего города",
+                            "app_desc".tr(),
                             style: TextStyle(
                               fontSize: 14,
                             ),

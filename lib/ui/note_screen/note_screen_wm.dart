@@ -8,6 +8,7 @@ import 'package:vteme_info/main.dart';
 import 'package:vteme_info/utils/navigation_service.dart';
 import 'package:vteme_info/utils/note_storege_service.dart';
 import 'package:vteme_info/utils/notifications_helper.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 enum NoteMode {
   Adding,
@@ -53,7 +54,6 @@ class NoteScreenWM extends WidgetModel {
       dateNotificationState.accept(date);
     });
 
-    //todo
     subscribe(saveNote.stream, (Note note) async {
       if (_mode == NoteMode.Adding) {
         await _addNote(note).then((value) {
@@ -102,7 +102,7 @@ class NoteScreenWM extends WidgetModel {
           notifsPlugin: notifsPlugin, //Or whatever you've named it in main.dart
           id: id,
           body: body,
-          title: "Напоминание: Заметки",
+          title: "reminder_notes".tr(),
           scheduledTime:
               dateNotifications); //Or whenever you actually want to trigger it}
     }
