@@ -37,5 +37,11 @@
   "my_ads": "My announcements",
   "report": "Report a bug",
   "about": "About",
-  "share": "Share"
+  "share": "Share",
+  "hotel": "Hotel",
+  "hostel": "Hostel",
+  "manor": "Manor",
+  "inn": "Inn",
+  "all": "All",
+  "not_found": "Not found"
 }

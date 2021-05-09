@@ -25,7 +25,6 @@ class NewsPageState extends State<NewsPage> {
     List<Widget> results = [];
     for (int i = 0; i < articles.length; i++) {
       if (i > 0 && i % modCountAd == 0) {
-        //TODO доделать баннер рекламы
         results.add(Provider.of<AdMobService>(context).getVipBanner());
       } else {
         results.add(Card(

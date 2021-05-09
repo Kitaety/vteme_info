@@ -23,7 +23,6 @@ class NoteArgs {
 }
 
 class NoteScreenWM extends WidgetModel {
-  NotesScreenErrorHandler _handler = NotesScreenErrorHandler();
   Note _note;
   NoteMode _mode;
   r.StreamedState<DateTime> dateNotificationState = r.StreamedState();

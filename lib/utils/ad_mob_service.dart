@@ -11,7 +11,7 @@ class AdMobService {
   ];
   int _currentVipBanner = 0;
   AdMobService(this.initializationStatus);
-  //todo ios ads
+  //TODO ios ads
   String get bannerAdUnitId => Platform.isAndroid
       ? 'ca-app-pub-3940256099942544/6300978111'
       //: 'ca-app-pub-3940256099942544/2934735716';

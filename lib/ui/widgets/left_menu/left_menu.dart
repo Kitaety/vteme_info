@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vteme_info/common/icons_vteme_icons.dart';
+import 'package:vteme_info/utils/navigation_service.dart';
 import '../spacer_list_item.dart';
 import 'left_menu_header.dart';
 import 'left_menu_item.dart';
@@ -46,7 +47,9 @@ class _LeftMenuState extends State<LeftMenu>
           LeftMenuItem(
             iconData: IconsVteme.hostel,
             title: "hotels".tr(),
-            onTap: () {},
+            onTap: () async {
+              await NavigationService.instance.navigateTo("hostels");
+            },
           ),
           LeftMenuItem(
             iconData: IconsVteme.food_points,

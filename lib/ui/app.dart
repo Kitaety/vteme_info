@@ -1,5 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:vteme_info/ui/company/company_screen/company_screen.dart';
+import 'package:vteme_info/ui/company/pages/hostels/hostels_page.dart';
 import 'package:vteme_info/ui/currency_converter_screen/currency_converter_screen.dart';
 import 'package:vteme_info/ui/main_screen/main_screen.dart';
 import 'package:vteme_info/utils/navigation_service.dart';
@@ -28,6 +30,8 @@ class _AppState extends State<App> {
         "screen_currency_converter": (context) => CurrencyConverterScreen(),
         "add_currency_page": (context) => AddCurrencyPage(),
         "news_article_screen": (context) => NewsArticleScreen(),
+        "company_screen": (context) => CompanyScreen(),
+        "hostels": (context) => HostelsPage(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
