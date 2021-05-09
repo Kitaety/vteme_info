@@ -1,7 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:vteme_info/ui/company/company_screen/company_screen.dart';
-import 'package:vteme_info/ui/company/pages/hostels/hostels_page.dart';
+import 'package:vteme_info/ui/company/pages/entertainment_page.dart';
+import 'package:vteme_info/ui/company/pages/food_point_page.dart';
+import 'package:vteme_info/ui/company/pages/hostels_page.dart';
+import 'package:vteme_info/ui/company/pages/medical_page.dart';
+import 'package:vteme_info/ui/company/pages/organizations_page.dart';
+import 'package:vteme_info/ui/company/pages/shops_page.dart';
 import 'package:vteme_info/ui/currency_converter_screen/currency_converter_screen.dart';
 import 'package:vteme_info/ui/main_screen/main_screen.dart';
 import 'package:vteme_info/utils/navigation_service.dart';
@@ -32,6 +37,11 @@ class _AppState extends State<App> {
         "news_article_screen": (context) => NewsArticleScreen(),
         "company_screen": (context) => CompanyScreen(),
         "hostels": (context) => HostelsPage(),
+        "food_points": (context) => FoodPointPage(),
+        "organizations": (context) => OrganizationsPage(),
+        "medical": (context) => MedicalPage(),
+        "entertainment": (context) => EntertainmentPage(),
+        "shops": (context) => ShopsPage(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

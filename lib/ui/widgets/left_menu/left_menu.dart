@@ -54,12 +54,16 @@ class _LeftMenuState extends State<LeftMenu>
           LeftMenuItem(
             iconData: IconsVteme.food_points,
             title: "food_points".tr(),
-            onTap: () {},
+            onTap: () async {
+              await NavigationService.instance.navigateTo("food_points");
+            },
           ),
           LeftMenuItem(
             iconData: IconsVteme.plant,
             title: "organizations".tr(),
-            onTap: () {},
+            onTap: () async {
+              await NavigationService.instance.navigateTo("organizations");
+            },
           ),
           LeftMenuItem(
             iconData: IconsVteme.coin,
@@ -69,17 +73,23 @@ class _LeftMenuState extends State<LeftMenu>
           LeftMenuItem(
             iconData: IconsVteme.heartbeat,
             title: "medical_institutions".tr(),
-            onTap: () {},
+            onTap: () async {
+              await NavigationService.instance.navigateTo("medical");
+            },
           ),
           LeftMenuItem(
             iconData: IconsVteme.entertainment,
             title: "entertainment".tr(),
-            onTap: () {},
+            onTap: () async {
+              await NavigationService.instance.navigateTo("entertainment");
+            },
           ),
           LeftMenuItem(
             iconData: IconsVteme.trade,
             title: "shops".tr(),
-            onTap: () {},
+            onTap: () async {
+              await NavigationService.instance.navigateTo("shops");
+            },
           ),
           SpacerListItem(),
           LeftMenuItem(
